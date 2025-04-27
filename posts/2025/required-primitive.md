@@ -2,6 +2,9 @@
 title: Required parameter i Kotlin-kode blir ikke håndhevet
 date: 2025-03-28
 author: Bjørn
+tags:
+  - kotlin
+  - springboot
 ---
 
 Oppdaget til min store forskrekkelse at en klasse som representerer request body til resttjenesten hadde en ikke-nullbar property `val ferdig: Boolean` i Kotlin-klassen. Lagde en test som ikke hadde denne propertyen i Json-grafen som ble sendt inn og forventet at den skulle feile med 400 Bad request. Det gjorde den ikke. I databasen hadde den fått veriden `false`.

@@ -10,6 +10,6 @@ export default (eleventyConfig) => {
   
   return {
     /* TODO: update below with name of your repo! */
-    pathPrefix: "/boosterblog/",
+    pathPrefix: "/blog/",
   };
 };

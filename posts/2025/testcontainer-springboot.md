@@ -2,6 +2,9 @@
 title: Testcontainer i springboot
 date: 2025-03-26
 author: Bjørn
+tags:
+  - springboot
+  - testcontainers
 ---
 
 # Testcontainers i Spring boot

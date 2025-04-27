@@ -2,6 +2,8 @@
 title: Skille enhets- og integrasjonstester i maven
 date: 2025-03-27
 author: Bjørn
+tags:
+  - maven
 ---
 
 # Hvordan skille mellom enhets- og integrasjonstester
