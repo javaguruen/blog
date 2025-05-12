@@ -26,3 +26,31 @@ Depending on your inclination, you don’t have to do this part. Feel free to sk
 - `npm start` to run locally at http://localhost:8080
 - `npm run build` to generate static HTML/CSS
 # boosterblog
+
+
+----
+
+Lag et nytt repository kalt blog. Det må være et public repository for at github actions skal kunne kjøre.
+
+Bloggen er et resultat av workshopen på booster 2025 med Elisabeth Irgens og tar utgangspunkt i hennes
+repository https://github.com/elisabethirgens/booster-2025-blog
+
+Endre title, footer og navn på bloggen i filen `_includes/main.liquid`.
+
+I eleventy.config.js endre pathPrefix til `/blog/`,
+
+syntaxHighlight:
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+eleventyConfig.addPlugin(syntaxHighlight);
+
+package.json:     "@11ty/eleventy-plugin-syntaxhighlight": "5.0.0"
+
+
+blog git:(main) ✗ git remote remove origin
+➜  blog git:(main) ✗ git remote add origin git@github.com:javaguruen/blog.git
+
+git branch -M main
+git push -u origin main
+
+github:
+settings -> Pages. Build and deployment, endre til github actions.

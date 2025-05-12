@@ -4,6 +4,7 @@ date: 2025-03-27
 author: Bjørn
 tags:
   - maven
+  - test
 ---
 
 # Hvordan skille mellom enhets- og integrasjonstester
@@ -23,8 +24,10 @@ Surefire maven plugin er en standard plugin som ikke trenger å defineres i pom-
 Sjekk alltid opp siste versjon i maven central.
 
 Det som er viktig å huske på er at surefire vil plukke opp test-klasser basert på klassenavnet. Den vil kjøre klasser har navn ette r følgende mønster:
-- *Test
-- TODO: finn de andre
+- **/*Test.java
+- **/Test*.java
+- **/Tests*.java
+- **/TestCase.java
 
 Surefire vil trigge i maven life cycle `test`, altså når du skriver `maven test` eller en av life cyclene som kjører test som en del av sin egen. Du kan hoppe over surefire-testene ved å gi følgene argument til maven: `mvn install -DskipTests`.
 
@@ -38,6 +41,7 @@ Failsafe vil, i motsetning til surefire, kjøre gjennom alle testene og ikke sto
         <configuration>
           <skipTests>${skipITests}</skipTests>
           <argLine>
+            <!-- For å slippe warnings om java agent -->
             -javaagent:${settings.localRepository}/org/mockito/mockito-core/${mockito.version}/mockito-core-${mockito.version}.jar
             -Xshare:off
           </argLine>
@@ -55,7 +59,8 @@ Failsafe vil, i motsetning til surefire, kjøre gjennom alle testene og ikke sto
 ```
 Jeg har lagt inn property for å hoppe over integrasjonstestene med argumentet `mvn install -DskipITests` (en stor 'I' til forskjell fra argumentet til enhetstestene).
 Failsafe vil plukke opp tester som har følgende navnemønster:
-- *IT
-- TODO: legge inne de andre
+- **/*IT.java
+- **/IT*.java
+- **/*ITCase.java
 
 Så ved å sette opp både surefire og failsafe, og ha et bevisst forhold til hva navnet på testklassen er, så kan du skille mellom kjøring av de raske enhetstestene og de tregere integrasjonstestene hvis du ønsker det.
