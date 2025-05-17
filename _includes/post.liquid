@@ -11,12 +11,5 @@ layout: main.liquid
     <div class="txt-author">{{ author }}</div>
   </header>
   <div>{{ content }}</div>
-  <div>{{ tags }}</div>
   
-  <ul>
-  {%- for post in collections.post -%}
-    <li>{{ post.data.title }}</li>
-  {%- endfor -%}
-  </ul>
-
 </article>
