@@ -15,6 +15,13 @@
     </header>
 
     <main class="page-content">
+<ul class="tags">
+    {% for tag in collections.tag %}
+        <li class="tag">
+            {{ tag }}
+        </li>
+    {% endfor %}
+</ul>
       <div class="content-wrapper">{{ content }}</div>
     </main>
 

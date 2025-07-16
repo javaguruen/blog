@@ -54,3 +54,8 @@ git push -u origin main
 
 github:
 settings -> Pages. Build and deployment, endre til github actions.
+
+# Tags
+https://ginger.wtf/posts/updating-tag-cloud-with-eleventy/
+
+https://ginger.wtf/tags/

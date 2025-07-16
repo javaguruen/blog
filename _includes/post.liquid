@@ -12,4 +12,11 @@ layout: main.liquid
   </header>
   <div>{{ content }}</div>
   
+  
+  <ul>
+  {%- for post in collections.post -%}
+    <li>{{ post.data.title }}</li>
+  {%- endfor -%}
+  </ul>
+
 </article>
