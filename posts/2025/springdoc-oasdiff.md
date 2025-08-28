@@ -89,7 +89,7 @@ Løsningen for meg var som følgende:
         <build>
         <!-- Plugins som kjører for kun denne profilen -->
         <plugins>
-        ... se eksemplene over.
+        ... Her skal pluginene fra avsnittene over settes inn.
         </plugins>
     </profile>
 </profiles>
@@ -106,3 +106,14 @@ I github-actionen for å generere OAS-filen kjører jeg da maven med den nye pro
     : # Generate oasfile
     mvn verify -Poasdiff -DskipTests -DskipITests
 ```
+
+Det å faktisk sammenligne den kommende versjonen av API-et mot det som kjører i produksjon gjøres i en egen jobb i github-actionen som vist under. Her er `base` en url eller sti til OAS-filen til det eksisterende, produksjons-APIet og `revision` er stien til den kommende, som i jobben tidligere ble generert og ligger lokalt i `target/openapi.json`. Dette kjører i en egen arbeidsflyt/workflow/pipeline, så jeg vil at den skal feil dersom det er breaking changes - derfor `fail-on: 'ERR'`.
+
+```yaml
+- name: Running OpenAPI Spec diff action
+  uses: oasdiff/oasdiff-action/breaking@main
+  with:
+    base: https://production.myapi.com/todo/v3/api-docs
+    revision: target/openapi.json
+    fail-on: 'ERR'
+```          
